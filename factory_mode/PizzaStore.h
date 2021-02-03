@@ -26,12 +26,7 @@ public:
 		case cheese:
 			pizza = new NYStyleCheesePizza();
 			break;
-		/*case cheese:
-			pizza = new NYStyleCheesePizza();
-			break;
-		case cheese:
-			pizza = new NYStyleCheesePizza();
-			break;*/
+		
 		default:
 			std::cout << "There is not this type of pizze" << std::endl;
 		}
