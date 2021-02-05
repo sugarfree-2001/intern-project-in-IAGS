@@ -4,30 +4,30 @@ using namespace std;
 
 class Singleton {
 private:
-    static Singleton *m_s;
+    static Singleton *p;
 
     Singleton() = default;
     ~Singleton() = default;
-    
+
 public:
     static Singleton* get_instance() {
-        if(m_s == NULL) {
-            m_s = new Singleton();
+        if(p == NULL) {
+            p = new Singleton();
         }
-        cout << Singleton::m_s << endl;
-        return m_s;
+        cout << Singleton::p << endl;
+        return p;
     }
 
     static void release_instance() {
-        if(m_s != NULL) {
-            cout << Singleton::m_s << " release" << endl;
-            delete m_s;
-            m_s = NULL;
+        if(p != NULL) {
+            cout << Singleton::p << " release" << endl;
+            delete p;
+            p = NULL;
         }
     }
 };
 
-Singleton* Singleton::m_s = NULL;
+Singleton* Singleton::p = NULL;
 
 int main(int argc, char const *argv[])
 {
