@@ -6,10 +6,9 @@ class Singleton {
 private:
     static Singleton *m_s;
 
-    Singleton() {}
-
-    ~Singleton() {}
-
+    Singleton() = default;
+    ~Singleton() = default;
+    
 public:
     static Singleton* get_instance() {
         if(m_s == NULL) {
