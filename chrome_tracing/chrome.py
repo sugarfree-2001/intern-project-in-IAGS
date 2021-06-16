@@ -6,6 +6,7 @@ parameter = 10
 file = pd.read_csv('chrome.csv')
 df = pd.DataFrame(file)
 f = open('tracing.json','w')
+f.write('[')
 df.from_display_address = round(df.from_display_address/parameter)
 df.to_display_address = round(df.to_display_address/parameter)
 for i in range(0,len(df)-1):
@@ -19,8 +20,9 @@ for i in range(0,len(df)-1):
             flag = j
             break
     if flag > 0:
-        f.write('{"name":"' + str(df.iloc[i][4]) + '&' + str(df.iloc[i][2]) + '", "ph":"B", "ts":' + str(df.iloc[i][1]) + '},\n')
-        f.write('{"name":"' + str(df.iloc[i][4]) + '&' + str(df.iloc[i][2]) + '", "ph":"E", "ts":' + str(df.iloc[flag][1]) + '},\n')
+        f.write('{"name":"' + str(df.iloc[i][4]) + '&' + str(df.iloc[i][2]) + '", "ph":"B", "pid":"Main", "ts":' + str(df.iloc[i][1]) + '},\n')
+        f.write('{"name":"' + str(df.iloc[i][4]) + '&' + str(df.iloc[i][2]) + '", "ph":"E", "pid":"Main", "ts":' + str(df.iloc[flag][1]) + '},\n')
     print(i)
 
+f.write(']')
 f.close()
