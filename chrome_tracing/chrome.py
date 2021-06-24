@@ -19,7 +19,7 @@ for i in range(0,len(df)-1):
         if j > 24:
             flag = j
             break
-    if flag > 0:
+    if flag > 0 and df.iloc[i][1] < df.iloc[flag][1]:
         f.write('{"name":"' + str(df.iloc[i][4]) + '&' + str(df.iloc[i][2]) + '", "ph":"B", "pid":"Main", "ts":' + str(df.iloc[i][1]) + '},\n')
         f.write('{"name":"' + str(df.iloc[i][4]) + '&' + str(df.iloc[i][2]) + '", "ph":"E", "pid":"Main", "ts":' + str(df.iloc[flag][1]) + '},\n')
     print(i)
